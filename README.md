@@ -4,6 +4,13 @@ Framework-agnostic environment file manager for VS Code. Discover, parse, compar
 
 Everything runs locally. No telemetry, no network calls, no accounts.
 
+## This is the view after the extension
+
+![Full Extension View](4.png)
+![Environment Files Section](1.png)
+![Missing Keys Section](2.png)
+![Comparison Results Section](3.png)
+
 ## Features
 
 - **Environment File Discovery** — finds `.env`, `.env.*` (local/development/production/staging/test/example/…), `application*.properties`, and `application*.yml|yaml` anywhere in the workspace, skipping `node_modules`, `vendor`, build output, and virtualenvs.
@@ -59,11 +66,7 @@ Rules the codebase follows:
 - Pure logic (`parsers`, `ComparisonService`, `EnvironmentParserService`, `reportBuilder`) never imports `vscode`, so it is testable in plain Node.
 - Dependency injection happens once, by hand, in `extension.ts`.
 
-### Extending
 
-- **New file format** → add a parser class in `src/parsers/`, register it in `createParsers()`. Done.
-- **New source (Phase 2: AWS Parameter Store, Vault, Docker, Kubernetes, remote servers)** → implement `IEnvironmentSource`; comparison, reports, and trees consume `EnvFile[]` and need no changes.
-- **Secret encryption/decryption (Phase 2)** → implement `IValueTransformer`; it hooks value reads/writes without touching parsers.
 
 ## License
 
