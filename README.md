@@ -6,10 +6,10 @@ Everything runs locally. No telemetry, no network calls, no accounts.
 
 ## This is the view after the extension
 
-![Full Extension View](4.png)
-![Environment Files Section](1.png)
-![Missing Keys Section](2.png)
-![Comparison Results Section](3.png)
+![Full Extension View](views/4.png)
+![Environment Files Section](views/1.png)
+![Missing Keys Section](views/2.png)
+![Comparison Results Section](views/3.png)
 
 ## Features
 
