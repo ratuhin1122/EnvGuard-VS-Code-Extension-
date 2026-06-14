@@ -2,8 +2,8 @@
   "name": "envguard",
   "displayName": "EnvGuard",
   "description": "Framework-agnostic environment file manager. Discover, parse, compare, and audit .env, .properties, and YAML config files across any project.",
-  "version": "0.1.0",
-  "publisher": "envguard",
+  "version": "1.0.0",
+  "publisher": "Tuhin",
   "license": "MIT",
   "icon": "resources/icon.png",
   "galleryBanner": {
