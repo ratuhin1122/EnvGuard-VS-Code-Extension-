@@ -1,0 +1,120 @@
+{
+  "name": "envguard",
+  "displayName": "EnvGuard",
+  "description": "Framework-agnostic environment file manager. Discover, parse, compare, and audit .env, .properties, and YAML config files across any project.",
+  "version": "0.1.0",
+  "publisher": "envguard",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#1c5f6e",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/envguard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/envguard/issues"
+  },
+  "homepage": "https://github.com/your-username/envguard#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "env",
+    "dotenv",
+    "environment",
+    "configuration",
+    "properties",
+    "yaml"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "envguard",
+          "title": "EnvGuard",
+          "icon": "resources/envguard.svg"
+        }
+      ]
+    },
+    "views": {
+      "envguard": [
+        {
+          "id": "envguard.environmentFiles",
+          "name": "Environment Files"
+        },
+        {
+          "id": "envguard.missingKeys",
+          "name": "Missing Keys"
+        },
+        {
+          "id": "envguard.comparisonResults",
+          "name": "Comparison Results"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "envguard.scan",
+        "title": "EnvGuard: Scan Environment Files",
+        "icon": "$(search)"
+      },
+      {
+        "command": "envguard.compare",
+        "title": "EnvGuard: Compare Files",
+        "icon": "$(diff)"
+      },
+      {
+        "command": "envguard.refresh",
+        "title": "EnvGuard: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "envguard.exportReport",
+        "title": "EnvGuard: Export Report",
+        "icon": "$(save)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "envguard.refresh",
+          "when": "view == envguard.environmentFiles",
+          "group": "navigation"
+        },
+        {
+          "command": "envguard.compare",
+          "when": "view == envguard.comparisonResults",
+          "group": "navigation"
+        },
+        {
+          "command": "envguard.exportReport",
+          "when": "view == envguard.missingKeys",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "yaml": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
