@@ -3,7 +3,7 @@
   "displayName": "EnvGuard-Environment Smart Manager",
   "description": "Framework-agnostic environment file manager. Discover, parse, compare, and audit .env, .properties, and YAML config files across any project.",
   "version": "1.0.0",
-  "publisher": "Tuhin1122",
+  "publisher": "RuhulAminTuhin",
   "license": "MIT",
   "icon": "resources/icon.png",
   "galleryBanner": {
