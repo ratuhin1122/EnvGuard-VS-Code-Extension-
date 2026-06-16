@@ -2,7 +2,7 @@
   "name": "envguardsmartmanager",
   "displayName": "EnvGuard-Environment Smart Manager",
   "description": "Framework-agnostic environment file manager. Discover, parse, compare, and audit .env, .properties, and YAML config files across any project.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "Tuhin1122",
   "license": "MIT",
   "icon": "resources/icon.png",
