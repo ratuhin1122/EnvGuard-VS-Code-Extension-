@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/envguard.git"
+    "url": "https://github.com/ratuhin1122/EnvGuard-VS-Code-Extension-.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/envguard/issues"
+    "url": "https://github.com/ratuhin1122/EnvGuard-VS-Code-Extension-/issues"
   },
-  "homepage": "https://github.com/your-username/envguard#readme",
+  "homepage": "https://github.com/ratuhin1122/EnvGuard-VS-Code-Extension-#readme",
   "engines": {
     "vscode": "^1.85.0"
   },

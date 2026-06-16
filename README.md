@@ -6,10 +6,10 @@ Everything runs locally. No telemetry, no network calls, no accounts.
 
 ## This is the view after the extension
 
-![Full Extension View](views/4.png)
-![Environment Files Section](views/1.png)
-![Missing Keys Section](views/2.png)
-![Comparison Results Section](views/3.png)
+![Full Extension View](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/4.png)
+![Environment Files Section](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/1.png)
+![Missing Keys Section](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/2.png)
+![Comparison Results Section](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/3.png)
 
 ## Features
 
