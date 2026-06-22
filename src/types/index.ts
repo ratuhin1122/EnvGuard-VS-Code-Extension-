@@ -14,6 +14,7 @@ import {
   EnvFileFormat,
   EnvReport,
   MissingKeyReport,
+  ValidationResult,
 } from '../models';
 
 /**
@@ -72,6 +73,16 @@ export interface IComparisonService {
   compare(base: EnvFile, target: EnvFile): ComparisonResult;
   /** Audit many files for keys that some define and others lack. */
   findMissingKeys(files: EnvFile[]): MissingKeyReport;
+}
+
+/**
+ * Validates discovered env files for the pre-push hook: missing required
+ * keys, empty required values, and cross-file consistency. Pure — operates
+ * only on EnvFile models, so the same logic runs in the extension and the
+ * standalone CLI.
+ */
+export interface IPrePushValidationService {
+  validate(files: EnvFile[]): ValidationResult;
 }
 
 /** Builds and persists report.json in the workspace root. */

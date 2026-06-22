@@ -76,6 +76,22 @@ export interface MissingKeyReport {
   missingKeys: MissingKey[];
 }
 
+/**
+ * Outcome of the pre-push validation run (also used by the standalone CLI).
+ * VS Code-free: a plain data shape produced from EnvFile models so it works
+ * both inside the extension and in the git-hook CLI.
+ */
+export interface ValidationResult {
+  /** Required keys (from `.env.example`) absent from one or more env files. */
+  missing: string[];
+  /** Required keys present but with an empty value in one or more env files. */
+  empty: string[];
+  /** Keys some env files define and others lack (cross-file consistency). */
+  inconsistencies: MissingKey[];
+  /** True when any of the above lists is non-empty. */
+  hasFindings: boolean;
+}
+
 /** Serializable shape written to report.json by the ReportService. */
 export interface EnvReport {
   generatedAt: string;

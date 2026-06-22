@@ -81,6 +81,15 @@
         "command": "envguard.exportReport",
         "title": "EnvGuard: Export Report",
         "icon": "$(save)"
+      },
+      {
+        "command": "envguard.installPrePushHook",
+        "title": "EnvGuard: Install Pre-Push Hook",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "envguard.uninstallPrePushHook",
+        "title": "EnvGuard: Uninstall Pre-Push Hook"
       }
     ],
     "menus": {
@@ -99,8 +108,47 @@
           "command": "envguard.exportReport",
           "when": "view == envguard.missingKeys",
           "group": "navigation"
+        },
+        {
+          "command": "envguard.installPrePushHook",
+          "when": "view == envguard.environmentFiles",
+          "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "EnvGuard",
+      "properties": {
+        "envguard.gitHook.mode": {
+          "type": "string",
+          "enum": [
+            "warn",
+            "strict"
+          ],
+          "enumDescriptions": [
+            "Print validation warnings but always allow the push to continue.",
+            "Block the push (non-zero exit) when validation finds problems."
+          ],
+          "default": "warn",
+          "description": "Behavior of the EnvGuard pre-push hook when environment validation finds issues. Changing this updates an already-installed hook automatically."
+        },
+        "envguard.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline diagnostics (squiggles and Problems-panel entries) for .env files: missing and empty variables required by .env.example."
+        },
+        "envguard.diagnostics.severity": {
+          "type": "string",
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ],
+          "default": "warning",
+          "description": "Severity used for EnvGuard inline diagnostics."
+        }
+      }
     }
   },
   "scripts": {
