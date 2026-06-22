@@ -4,9 +4,11 @@ Framework-agnostic environment file manager for VS Code. Discover, parse, compar
 
 Everything runs locally. No telemetry, no network calls, no accounts.
 
-## This is the view after the extension
+## EnvGuard in action
 
-![EnvGuard in action](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/demo.gif)
+Inline diagnostics catch a broken `.env` the moment you open it — a missing key and an empty required value, flagged right on the line:
+
+![EnvGuard inline diagnostics](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/inline-diagnostics.png)
 
 ## Features
 
@@ -45,6 +47,17 @@ Findings update live (no save needed). Editing `.env.example` re-lints every ope
 
 > Like the pre-push hook, this validates **keys (structure)**, not **values** — different values across environments are expected and never flagged.
 
+### How it looks
+
+![Inline diagnostics flagging a missing key and an empty value](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/inline-diagnostics.png)
+
+In the example above, `.env.example` requires `APP_KEY` and `DB_PASSWORD`. EnvGuard underlines two problems directly in the editor:
+
+- **`APP_KEY` is missing** — it's declared in `.env.example` but absent from this file, so EnvGuard reports *"Missing required variable `APP_KEY` (defined in .env.example)"* on the first line.
+- **`DB_PASSWORD` is empty** — the key is present but has no value, so EnvGuard reports *"`DB_PASSWORD` is empty but required by .env.example"* right on that key's line.
+
+No command, no save, no sidebar trip — the squiggles and Problems-panel entries appear and update as you type.
+
 ### Settings
 
 | Setting | Default | Description |
@@ -79,11 +92,17 @@ Changing the mode automatically updates an already-installed hook — no need to
 
 ### Usage
 
-1. Run **EnvGuard: Install Pre-Push Hook** from the Command Palette (or the 🛡 button on the Environment Files view). This must be done from the extension, as the hook references the bundled validator.
-2. `git push` as usual — the hook runs and reports any issues.
-3. To remove it, run **EnvGuard: Uninstall Pre-Push Hook**.
+**1. Install the hook.** Press `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS) to open the Command Palette, type **EnvGuard Pre-Push Hook**, and run **EnvGuard: Install Pre-Push Hook** (you can also click the 🛡 button on the Environment Files view). This must be done from the extension, as the hook references the bundled validator. The hook is installed in **`warn` mode by default**.
 
-If a non-EnvGuard `pre-push` hook already exists, it is backed up to `pre-push.envguard-backup` and restored on uninstall.
+![Installing the pre-push hook from the Command Palette](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/install-prepush-hook.png)
+
+**2. Push as usual.** `git push` now runs the validation automatically and reports any issues. In the default `warn` mode the push still goes through; switch to `strict` to block it.
+
+**3. Switch to strict mode (optional).** To change from `warn` to `strict`, open **Settings** in the editor and search for **EnvGuard Hook Mode**, then pick `strict` from the **EnvGuard › Git Hook: Mode** dropdown. The already-installed hook is rewritten automatically — no need to reinstall.
+
+![Changing the hook mode in Settings](https://raw.githubusercontent.com/ratuhin1122/EnvGuard-VS-Code-Extension-/main/views/git-hook-mode.png)
+
+**4. Remove it** anytime by running **EnvGuard: Uninstall Pre-Push Hook**. If a non-EnvGuard `pre-push` hook already existed, it was backed up to `pre-push.envguard-backup` and is restored on uninstall.
 
 ## Getting started (development)
 
